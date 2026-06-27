@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    background-color: #0B0B0B;
+  }
+
+  /* Visible, branded focus state for all interactive elements (WCAG / a11y requirement) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.35);
+    color: #FFFFFF;
+  }
+
+  /* Slim, gold-tinted scrollbar to match the brand instead of default grey browser chrome */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0B0B;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37, #FFB703);
+    border-radius: 8px;
+  }
+}
+
+@layer components {
+  /* Eyebrow label used above every section headline */
+  .eyebrow {
+    @apply text-eyebrow font-medium uppercase text-gold tracking-[0.2em];
+  }
+
+  /* Standard section container: full-bleed background, constrained content */
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-section;
+  }
+
+  /* Glassmorphism surface reused across nav, cards, pricing, testimonials */
+  .glass-surface {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .gold-text-gradient {
+    @apply bg-gold-sweep bg-clip-text text-transparent;
+  }
+
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 px-7 py-3.5 text-sm md:text-base;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Respect prefers-reduced-motion globally: disable scroll-smooth and let JS-level
+   checks (usePrefersReducedMotion) gate parallax/autoplay/cursor-glow effects. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
