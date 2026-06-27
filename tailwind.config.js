@@ -55,8 +55,9 @@ export default {
         'ink-fade': 'linear-gradient(to bottom, rgba(11,11,11,0) 0%, rgba(11,11,11,0.6) 60%, rgba(11,11,11,1) 100%)',
       },
       boxShadow: {
-        gold: '0 0 0 1px rgba(212,175,55,0.4), 0 8px 30px -8px rgba(212,175,55,0.35)',
-        'gold-lg': '0 0 0 1px rgba(212,175,55,0.5), 0 20px 60px -15px rgba(212,175,55,0.45)',
+        gold: '0 4px 24px rgba(212,175,55,0.38), 0 2px 8px rgba(212,175,55,0.18)',
+        'gold-lg': '0 8px 48px rgba(212,175,55,0.62), 0 4px 16px rgba(212,175,55,0.28)',
+        'gold-ghost': '0 4px 20px rgba(212,175,55,0.22)',
         glass: '0 8px 32px -8px rgba(0,0,0,0.6)',
       },
       borderRadius: {

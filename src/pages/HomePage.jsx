@@ -15,9 +15,23 @@ import FAQSection from '../modules/faq/FAQSection'
 import ContactSection from '../modules/contact/ContactSection'
 
 /**
- * Single-page scrolling layout (build brief §5). Composes every module in
- * the exact top-to-bottom order specified in §6.
+ * Feature flags — flip any value to true to restore that section instantly.
+ * All component imports and routes are preserved above regardless of these flags.
  */
+const SECTIONS = {
+  about:        true,
+  services:     true,
+  whyChooseUs:  false,
+  portfolio:    true,
+  showreel:     false,
+  process:      false,
+  testimonials: false,
+  clients:      false,
+  pricing:      false,
+  faq:          false,
+  contact:      true,
+}
+
 function HomePage() {
   return (
     <>
@@ -25,17 +39,17 @@ function HomePage() {
       <Navbar />
       <main className="bg-ink text-paper">
         <Hero />
-        <AboutSection />
-        <ServicesSection />
-        <WhyChooseUs />
-        <PortfolioSection />
-        <VideoShowreel />
-        <EventProcess />
-        <TestimonialsSection />
-        <ClientsLogoStrip />
-        <PricingSection />
-        <FAQSection />
-        <ContactSection />
+        {SECTIONS.about        && <AboutSection />}
+        {SECTIONS.services     && <ServicesSection />}
+        {SECTIONS.whyChooseUs  && <WhyChooseUs />}
+        {SECTIONS.portfolio    && <PortfolioSection />}
+        {SECTIONS.showreel     && <VideoShowreel />}
+        {SECTIONS.process      && <EventProcess />}
+        {SECTIONS.testimonials && <TestimonialsSection />}
+        {SECTIONS.clients      && <ClientsLogoStrip />}
+        {SECTIONS.pricing      && <PricingSection />}
+        {SECTIONS.faq          && <FAQSection />}
+        {SECTIONS.contact      && <ContactSection />}
       </main>
       <Footer />
     </>

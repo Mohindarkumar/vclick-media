@@ -85,9 +85,10 @@ function Lightbox({ items, activeIndex, onClose, onNavigate }) {
 
           <motion.div
             key={item?.id}
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.25 }}
+            initial={{ opacity: 0, scale: 0.84, filter: 'blur(12px)', y: 24 }}
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)', y: 0 }}
+            exit={{ opacity: 0, scale: 0.84, filter: 'blur(12px)', y: 24 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl w-full"
             onClick={(event) => event.stopPropagation()}
           >
@@ -96,9 +97,14 @@ function Lightbox({ items, activeIndex, onClose, onNavigate }) {
               alt={item?.title}
               className="w-full max-h-[78vh] object-contain rounded-2xl"
             />
-            <p className="mt-4 text-center text-paper/90 text-sm md:text-base font-medium">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.25, ease: 'easeOut' }}
+              className="mt-4 text-center text-paper/90 text-sm md:text-base font-medium"
+            >
               {item?.title}
-            </p>
+            </motion.p>
           </motion.div>
         </motion.div>
       )}

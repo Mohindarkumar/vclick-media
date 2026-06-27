@@ -1,17 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/layout/ScrollToTop'
+import CustomCursor from './components/ui/CustomCursor'
 import HomePage from './pages/HomePage'
+import GalleryPage from './pages/GalleryPage'
 
-// v1 ships as a single-page scrolling site (see build brief §5).
-// react-router-dom is wired up now so a future /portfolio deep-dive page
-// or /privacy, /terms legal pages can be added without restructuring.
 function App() {
   return (
     <BrowserRouter>
+      {/* Custom cursor is mounted once, outside route tree, so it persists
+          across page transitions without unmounting / remounting. */}
+      <CustomCursor />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* TODO: future routes, e.g. <Route path="/portfolio" element={<PortfolioPage />} /> */}
+        <Route path="/gallery" element={<GalleryPage />} />
+        {/* Future routes: /privacy, /terms, /portfolio/:id */}
       </Routes>
     </BrowserRouter>
   )

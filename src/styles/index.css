@@ -75,7 +75,47 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Hardware-accelerated layers for parallax and progress-bar elements */
+  .will-change-transform {
+    will-change: transform;
+  }
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Scroll-snap helpers (opt-in per section when sections are restored) */
+  .snap-start {
+    scroll-snap-align: start;
+  }
 }
+
+/* ── Custom cursor — suppress default when custom cursor is active ──────── */
+.no-cursor,
+.no-cursor * {
+  cursor: none !important;
+}
+
+/* ── Gallery skeleton shimmer ────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.gallery-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* ── Hide native scrollbar on filter bar ─────────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
 
 /* Respect prefers-reduced-motion globally: disable scroll-smooth and let JS-level
    checks (usePrefersReducedMotion) gate parallax/autoplay/cursor-glow effects. */
