@@ -62,7 +62,7 @@ function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-5 text-h2 font-extrabold text-paper text-balance"
+            className="mt-5 text-3xl md:text-4xl lg:text-h2 font-extrabold text-paper text-balance"
           >
             Who We Are
           </motion.h2>
@@ -107,13 +107,41 @@ function AboutSection() {
           </div>
         </div>
 
-        {/* Asymmetric collage */}
+        {/* Mobile: clean stacked image grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="grid grid-cols-2 gap-3 lg:hidden"
+        >
+          <img
+            src={COLLAGE_IMAGES[0].src}
+            alt={COLLAGE_IMAGES[0].alt}
+            loading="lazy"
+            className="w-full rounded-2xl object-cover aspect-[3/4] col-span-1 row-span-2"
+          />
+          <img
+            src={COLLAGE_IMAGES[1].src}
+            alt={COLLAGE_IMAGES[1].alt}
+            loading="lazy"
+            className="w-full rounded-2xl object-cover aspect-[4/3]"
+          />
+          <img
+            src={COLLAGE_IMAGES[2].src}
+            alt={COLLAGE_IMAGES[2].alt}
+            loading="lazy"
+            className="w-full rounded-2xl object-cover aspect-[4/3]"
+          />
+        </motion.div>
+
+        {/* Desktop: asymmetric overlapping collage */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative h-[420px] md:h-[520px] w-full"
+          className="relative h-[520px] w-full hidden lg:block"
         >
           {COLLAGE_IMAGES.map((img) => (
             <img

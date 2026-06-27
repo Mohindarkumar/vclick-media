@@ -218,12 +218,12 @@ function Hero() {
           {/* CTA buttons — blur-in */}
           <motion.div
             variants={blurIn}
-            className="mt-7 md:mt-10 flex flex-wrap items-center gap-4"
+            className="mt-7 md:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
           >
-            <Button as="a" href="#contact" variant="primary" icon={ArrowRight}>
+            <Button as="a" href="#contact" variant="primary" icon={ArrowRight} className="justify-center">
               Get a Consultation
             </Button>
-            <Button as="a" href="tel:+97150000000" variant="ghost" icon={Phone} iconPosition="left">
+            <Button as="a" href="tel:+97150000000" variant="ghost" icon={Phone} iconPosition="left" className="justify-center sm:w-auto">
               Call Us Now
             </Button>
           </motion.div>
@@ -242,13 +242,13 @@ function Hero() {
           className="section-container pb-8 md:pb-10 pt-6 border-t"
           style={{ borderColor: 'rgba(255,255,255,0.12)' }}
         >
-          <dl className="grid grid-cols-2 sm:grid-cols-4">
+          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 sm:gap-y-0">
             {STATS.map(({ value, label }, i) => (
               <div
                 key={label}
-                className="relative flex flex-col px-6 first:pl-0"
+                className="relative flex flex-col sm:px-6 sm:first:pl-0"
               >
-                {/* Vertical divider between items (desktop) */}
+                {/* Vertical divider — desktop only */}
                 {i > 0 && (
                   <span
                     className="hidden sm:block absolute left-0 top-0 bottom-0 w-px"
@@ -256,10 +256,10 @@ function Hero() {
                     aria-hidden="true"
                   />
                 )}
-                <dd className="text-3xl sm:text-4xl md:text-5xl font-extrabold gold-text-gradient leading-none tabular-nums">
+                <dd className="text-2xl sm:text-3xl md:text-4xl font-extrabold gold-text-gradient leading-none tabular-nums">
                   {value}
                 </dd>
-                <dt className="text-[11px] text-mist/60 mt-2 uppercase tracking-[0.16em]">
+                <dt className="text-[11px] text-mist/60 mt-2 uppercase tracking-[0.14em] leading-snug">
                   {label}
                 </dt>
               </div>
