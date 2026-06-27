@@ -95,7 +95,7 @@ function Hero() {
       id="home"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative h-screen min-h-[700px] w-full overflow-hidden flex items-center pt-20 md:pt-24"
+      className="relative h-screen min-h-[780px] w-full overflow-hidden flex flex-col pt-20 md:pt-24"
     >
       {/* ── Camera background with parallax ───────────────────────────────── */}
       <motion.div
@@ -124,10 +124,10 @@ function Hero() {
         style={{ background: 'linear-gradient(100deg, rgba(11,11,11,0.85) 0%, rgba(11,11,11,0.55) 45%, rgba(11,11,11,0.2) 100%)' }}
         aria-hidden="true"
       />
-      {/* Layer 3: bottom fade-to-ink for stats strip readability */}
+      {/* Layer 3: bottom vignette — stays semi-transparent so camera image shows through */}
       <div
         className="absolute inset-0"
-        style={{ background: 'linear-gradient(to top, #0B0B0B 0%, rgba(11,11,11,0.5) 28%, transparent 55%)' }}
+        style={{ background: 'linear-gradient(to top, rgba(11,11,11,0.82) 0%, rgba(11,11,11,0.38) 22%, transparent 48%)' }}
         aria-hidden="true"
       />
       {/* Layer 4: subtle top vignette so navbar transition stays clean */}
@@ -149,10 +149,10 @@ function Hero() {
         />
       )}
 
-      {/* ── Main content ───────────────────────────────────────────────────── */}
+      {/* ── Main content — flex-1 keeps it centered in remaining space ──── */}
       <motion.div
         style={{ y: contentParallaxY }}
-        className="relative z-10 section-container w-full will-change-transform"
+        className="relative z-10 section-container w-full will-change-transform flex-1 flex items-center"
       >
         <motion.div
           className="max-w-3xl"
@@ -160,7 +160,7 @@ function Hero() {
           initial="hidden"
           animate="visible"
         >
-          {/* Eyebrow label — mask reveal (motion.div participates in stagger) */}
+          {/* Eyebrow label — mask reveal */}
           <motion.div variants={{ hidden: {}, visible: {} }} className="overflow-hidden mb-7">
             <motion.div variants={maskReveal} className="flex items-center gap-3">
               <span className="h-px w-8 bg-gold-sweep" aria-hidden="true" />
@@ -195,18 +195,18 @@ function Hero() {
           {/* Subtitle — blur-in */}
           <motion.p
             variants={blurIn}
-            className="mt-7 text-body-lg text-mist/90 max-w-xl leading-relaxed"
+            className="mt-5 md:mt-7 text-body-lg text-mist/90 max-w-xl leading-relaxed"
           >
             VClick delivers cinematic photography, videography, and full-service
             event production for brands, weddings, and exhibitions across the UAE.
           </motion.p>
 
           {/* Service tag chips — blur-in */}
-          <motion.div variants={blurIn} className="mt-6 flex flex-wrap gap-2">
+          <motion.div variants={blurIn} className="mt-4 md:mt-6 flex flex-wrap gap-2">
             {SERVICE_TAGS.map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-gold border border-gold/35 bg-gold/8 backdrop-blur-sm select-none"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-gold border border-gold/35 backdrop-blur-sm select-none"
                 style={{ backgroundColor: 'rgba(212,175,55,0.08)' }}
               >
                 <Icon size={13} strokeWidth={2.25} aria-hidden="true" />
@@ -218,7 +218,7 @@ function Hero() {
           {/* CTA buttons — blur-in */}
           <motion.div
             variants={blurIn}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-7 md:mt-10 flex flex-wrap items-center gap-4"
           >
             <Button as="a" href="#contact" variant="primary" icon={ArrowRight}>
               Get a Consultation
@@ -227,24 +227,45 @@ function Hero() {
               Call Us Now
             </Button>
           </motion.div>
+        </motion.div>
+      </motion.div>
 
-          {/* Stats strip */}
-          <motion.div
-            variants={fadeIn}
-            className="mt-14 pt-7 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 max-w-lg sm:max-w-2xl"
-          >
-            {STATS.map(({ value, label }) => (
-              <div key={label}>
-                <p className="text-2xl sm:text-3xl font-extrabold gold-text-gradient leading-none">
+      {/* ── Stats bar — full width, pinned to bottom of hero ─────────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 w-full"
+        aria-label="Key statistics"
+      >
+        <div
+          className="section-container pb-8 md:pb-10 pt-6 border-t"
+          style={{ borderColor: 'rgba(255,255,255,0.12)' }}
+        >
+          <dl className="grid grid-cols-2 sm:grid-cols-4">
+            {STATS.map(({ value, label }, i) => (
+              <div
+                key={label}
+                className="relative flex flex-col px-6 first:pl-0"
+              >
+                {/* Vertical divider between items (desktop) */}
+                {i > 0 && (
+                  <span
+                    className="hidden sm:block absolute left-0 top-0 bottom-0 w-px"
+                    style={{ backgroundColor: 'rgba(255,255,255,0.10)' }}
+                    aria-hidden="true"
+                  />
+                )}
+                <dd className="text-3xl sm:text-4xl md:text-5xl font-extrabold gold-text-gradient leading-none tabular-nums">
                   {value}
-                </p>
-                <p className="text-[11px] text-mist/65 mt-1.5 uppercase tracking-wider">
+                </dd>
+                <dt className="text-[11px] text-mist/60 mt-2 uppercase tracking-[0.16em]">
                   {label}
-                </p>
+                </dt>
               </div>
             ))}
-          </motion.div>
-        </motion.div>
+          </dl>
+        </div>
       </motion.div>
 
       <ScrollIndicator visible={showScrollIndicator} />

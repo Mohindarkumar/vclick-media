@@ -52,10 +52,8 @@ const COLLAGE_IMAGES = [
  */
 function AboutSection() {
   return (
-    <section id="about" className="section-padding bg-ink overflow-hidden">
-      <div className="section-container">
-        <GoldDivider className="mb-16 md:mb-20" />
-      </div>
+    <section id="about" className="pt-8 md:pt-10 pb-20 md:pb-28 lg:pb-section bg-ink overflow-hidden">
+      <GoldDivider className="mb-10 md:mb-14" />
       <div className="section-container grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <SectionEyebrow align="left">Who We Are</SectionEyebrow>
