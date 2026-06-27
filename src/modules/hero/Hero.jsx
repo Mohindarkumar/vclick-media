@@ -221,7 +221,7 @@ function Hero() {
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <Button as="a" href="#contact" variant="primary" icon={ArrowRight}>
-              Get a Free Consultation
+              Get a Consultation
             </Button>
             <Button as="a" href="tel:+97150000000" variant="ghost" icon={Phone} iconPosition="left">
               Call Us Now

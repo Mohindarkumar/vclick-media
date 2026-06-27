@@ -145,7 +145,7 @@ function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden xl:block flex-shrink-0">
           <Button as="a" href={pathname === '/' ? '#contact' : '/#contact'} variant="primary">
-            Get a Free Consultation
+            Get a Consultation
           </Button>
         </div>
 
@@ -224,7 +224,7 @@ function Navbar() {
                   variant="primary"
                   onClick={handleLinkClick}
                 >
-                  Get a Free Consultation
+                  Get a Consultation
                 </Button>
               </motion.li>
             </motion.ul>
