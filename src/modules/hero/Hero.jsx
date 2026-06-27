@@ -95,7 +95,7 @@ function Hero() {
       id="home"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative h-screen min-h-[700px] w-full overflow-hidden flex items-center"
+      className="relative h-screen min-h-[700px] w-full overflow-hidden flex items-center pt-20 md:pt-24"
     >
       {/* ── Camera background with parallax ───────────────────────────────── */}
       <motion.div
