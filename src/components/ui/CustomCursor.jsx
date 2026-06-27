@@ -27,7 +27,7 @@ const DAMPING = 0.80   // velocity damping per frame (lower = more overshoot)
 
 const RING_SIZE = {
   default: 36,
-  hover:   52,
+  hover:   40,   // barely grows — magnetic spring on the button is the visual cue
   image:   64,
   video:   64,
   click:   22,
@@ -35,28 +35,27 @@ const RING_SIZE = {
 
 const RING_BG = {
   default: 'rgba(255,255,255,0)',
-  hover:   'rgba(255,255,255,0.05)',
+  hover:   'rgba(255,255,255,0)',
   image:   'rgba(255,255,255,0.05)',
   video:   'rgba(255,255,255,0.05)',
-  click:   'rgba(255,255,255,0.14)',
+  click:   'rgba(255,255,255,0.12)',
 }
 
-// Box-shadow provides both the soft outer glow AND a dark halo that keeps the
-// ring visible on white/light backgrounds — no mix-blend-mode needed.
+// The dark outer halo (0 0 0 1px) keeps the ring legible on light backgrounds.
 const RING_SHADOW = {
-  default: '0 0 0 1px rgba(0,0,0,0.18), 0 0 18px 2px rgba(255,255,255,0.10)',
-  hover:   '0 0 0 1px rgba(0,0,0,0.18), 0 0 28px 4px rgba(255,255,255,0.16)',
-  image:   '0 0 0 1px rgba(0,0,0,0.18), 0 0 32px 5px rgba(255,255,255,0.18)',
-  video:   '0 0 0 1px rgba(0,0,0,0.18), 0 0 32px 5px rgba(255,255,255,0.18)',
-  click:   '0 0 0 1px rgba(0,0,0,0.22), 0 0 12px 2px rgba(255,255,255,0.22)',
+  default: '0 0 0 1px rgba(0,0,0,0.15), 0 0 16px 2px rgba(255,255,255,0.09)',
+  hover:   '0 0 0 1px rgba(0,0,0,0.10), 0 0 10px 1px rgba(255,255,255,0.04)',
+  image:   '0 0 0 1px rgba(0,0,0,0.18), 0 0 30px 4px rgba(255,255,255,0.16)',
+  video:   '0 0 0 1px rgba(0,0,0,0.18), 0 0 30px 4px rgba(255,255,255,0.16)',
+  click:   '0 0 0 1px rgba(0,0,0,0.20), 0 0 10px 2px rgba(255,255,255,0.20)',
 }
 
 const RING_BORDER = {
-  default: '1px solid rgba(255,255,255,0.72)',
-  hover:   '1.5px solid rgba(255,255,255,0.85)',
+  default: '1px solid rgba(255,255,255,0.70)',
+  hover:   '1px solid rgba(255,255,255,0.28)',   // very faint — magnetic pull is the cue
   image:   '1.5px solid rgba(255,255,255,0.85)',
   video:   '1.5px solid rgba(255,255,255,0.85)',
-  click:   '2px solid rgba(255,255,255,1.00)',
+  click:   '2px solid rgba(255,255,255,0.95)',
 }
 
 function CursorInner() {

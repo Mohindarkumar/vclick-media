@@ -42,7 +42,7 @@ function GalleryFilter({ albums, counts, activeAlbum, onChange }) {
               relative flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium
               transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold
               ${isActive
-                ? 'bg-gold-sweep text-ink shadow-gold'
+                ? 'bg-gold-sweep text-ink'
                 : 'glass-surface text-mist hover:text-paper hover:border-gold/40'
               }
             `}
